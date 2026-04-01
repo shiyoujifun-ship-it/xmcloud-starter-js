@@ -12,7 +12,7 @@ const DICTIONARY_KEYS = {
   SEARCH_INPUT_PLACEHOLDER: 'Search_Input_Placeholder',
 };
 
-/** Returns true if href is a valid URL (not a placeholder like # or http://#). */
+/** Returns true if href is a valid URL (not a placeholder like # or http://#). test */
 function hasValidHref(href: string | undefined): boolean {
   if (!href || href === '#' || href.startsWith('http://#')) return false;
   return true;
