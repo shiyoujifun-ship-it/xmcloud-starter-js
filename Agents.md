@@ -30,7 +30,7 @@ Each Next.js starter under `examples/*` uses this layout under `src/`. All of th
 
 - **Defined:** In `.env.remote.example` (or `.env.example`) at the root of each starter. Developers copy to `.env.local` for local development.
 - **Loaded:** Next.js loads `.env.local` automatically; **do not edit** `.env.local` or any `.env.*.local` in agent workflows.
-- **Consumed:** `sitecore.config.ts` and app code read `process.env.*` (e.g. `SITECORE_EDGE_CONTEXT_ID`, `NEXT_PUBLIC_DEFAULT_SITE_NAME`, `SITECORE_EDITING_SECRET`, `NEXT_PUBLIC_SITECORE_EDGE_CONTEXT_ID`).
+- **Consumed:** `sitecore.config.ts` and app code read `process.env.*` (e.g. `SITECORE_EDGE_CONTEXT_ID`, `NEXT_PUBLIC_DEFAULT_SITE_NAME`, `SITECORE_EDITING_SECRET`, `NEXT_PUBLIC_SITECORE_EDGE_CONTEXT_ID`, optional `NEXT_PUBLIC_SITE_URL` / `NEXT_PUBLIC_BASE_URL` for absolute URLs when no request host is available).
 
 **Where Content SDK (or JSS) is initialized**
 
@@ -39,6 +39,16 @@ Each Next.js starter under `examples/*` uses this layout under `src/`. All of th
 - **`src/lib/sitecore-client.ts`** – Sitecore/GraphQL client used in Server Components for layout and route data.
 - **`src/Layout.tsx`** and **`src/Providers.tsx`** – Wrap the app with Sitecore providers and layout structure.
 - **`.sitecore/component-map.ts`** – Generated component map; safe to edit when registering new components.
+
+## Upstream, forks, and pull request scope
+
+Before planning work that would become a **pull request to the official upstream** repository, confirm whether the user is targeting that upstream or their **own fork** or **template** copy of the repo.
+
+- **Official upstream** maintains a **limited** set of starters under `examples/` as best-practice **examples**. Appropriate contributions include **improvements, bug fixes, and generally useful features** in **existing** starters.
+- **Not appropriate as upstream pull requests:** **new example sites**, **additional** starters, or **bespoke** extensions for a **single** organization’s product or requirements. Those should live in a **user fork** or a repository created with **Use this template**.
+- In a **fork** or private copy, the user may add starters and extend freely; align the work to **that** repository, not upstream’s contribution model.
+
+Details: **[CONTRIBUTING.md – What we do not accept](CONTRIBUTING.md#what-we-do-not-accept)**. Related AI rules: **`.cursor/rules/project-context.mdc`**.
 
 ## Starter Applications Guide
 
@@ -136,7 +146,7 @@ Run these from **inside a starter directory** (e.g. `examples/kit-nextjs-skate-p
 ### Required Environment Variables
 
 All starters require these environment variables:
-- `SITECORE_EDGE_URL` - XM Cloud Edge URL
+- `NEXT_PUBLIC_SITECORE_EDGE_PLATFORM_HOSTNAME` - XM Cloud Edge URL
 - `SITECORE_EDGE_CONTEXT_ID` - XM Cloud Edge Context ID
 - `NEXT_PUBLIC_DEFAULT_SITE_NAME` - Default site name
 - `NEXT_PUBLIC_SITECORE_EDGE_CONTEXT_ID` - Public Edge Context ID
